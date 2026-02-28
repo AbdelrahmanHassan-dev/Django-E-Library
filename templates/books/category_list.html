@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>All the Categories</title>
+    </head>
+
+<body>
+    {% for category in categorys %}
+    <div>
+        <p>{{category.title}}</p>
+        <p>{{category.discribtion}}</p>
+        <p>{{category.spread_date}}</p>
+        <!-- <p>{{category.book_set.all}}</p> -->
+        <p>the book in this category:</p>
+        {% for i in category.book_set.all %}
+        <a href="{% url 'book_details' book_id=i.id %}">{{ i.title }}</a><br>
+        {% endfor %}
+            <p>the number of books in this category is {{category.book_set.all.count}}</p>
+            <p>========================================================</p>
+        </div>
+        {% endfor %}
+        
+    </body>
+    </html>
+{% endblock content %}

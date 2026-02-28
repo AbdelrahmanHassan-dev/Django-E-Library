@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>{{book.title}}</title>
+    </head>
+
+<body>
+    <p><strong>title:</strong> {{book.title}}</p>
+    <p><strong>discribtion:</strong> {{book.discribtion}}</p>
+    <p><strong>spread_date:</strong> {{book.spread_date}}</p>
+    <p><strong>number_pages:</strong> {{book.number_pages}}</p>
+    <p><strong>ISBN:</strong> {{book.ISBN}}</p>
+    <p><strong>language:</strong> {{book.language}}</p>
+    <p><strong>autor:</strong> {{book.autor}}</p>
+    <!-- <p><strong>category:</strong> {{book.category.all}}</p> -->
+   
+    {% if perms.books.can_mark_featured %}
+    <form method="POST" action="{% url 'mark_featured' %}">
+        {% csrf_token %}
+        <input type="checkbox" name="book_id" value="{{ book.id }}">
+        <button type="submit">mark as Featured</button>
+    </form>
+    {% endif %}
+
+    <p><strong>category:</strong><br>
+        {% for i in book.category.all %}
+        {{i.title}}<br>
+        {% endfor %}</p>
+        <form method="post" action="{% url 'favorite_books' %}">
+            {% csrf_token %}
+            <input type="hidden" name="book_id" value="{{book.id}}">
+            <button type="submit">add to favorite</button>
+        </form>
+        <img src="{{ book.picture.url }}" alt="Description of image">   
+        
+
+    </body> 
+
+{% endblock content %}

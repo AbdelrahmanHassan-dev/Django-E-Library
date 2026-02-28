@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>{{author_details.name}}</title>
+</head>
+
+<body>
+    <p><strong>name:</strong> {{author_details.name}}</p>
+    <p><strong>birthdate:</strong> {{author_details.birth_date}}</p>
+    <p><strong>nationallty:</strong> {{author_details.nationallty}}</p>
+    <p><strong>bio:</strong> {{author_details.bio}}</p>
+    <img src="{{ author_details.photo_profile.url }}" alt="Description of image">   
+    
+</body>
+
+{% endblock content %}

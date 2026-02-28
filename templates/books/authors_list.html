@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>All the authors</title>
+    </head>
+
+<body>
+
+    {% for author in authors %}
+    <div>
+        <a href="{% url 'author_details' author_id=author.id %}">{{author.name}}</a>            
+        <p>{{author.birth_date}}</p>
+        <p>{{author.nationallty}}</p>
+        <p>{{author.bio}}</p>
+        <p><img src="{{ author.photo_profile.url }}" width="200" alt="photo_profile"></p>
+    </div>
+    {% endfor %}
+
+</body>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>Your Home</title>
+</head>
+<body>
+    <h1>Welcome to YOUR HOME</h1>
+    <h3>we have {{ category.count }} of categories</h3>
+    <h3>we have {{ author.count }} of authors</h3>
+    <h1>take a look</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'authors_list' %}">authors list</a></li>
+                <li><a href="{% url 'books_list' %}">books list</a></li>
+                <li><a href="{% url 'category_list' %}">categories list</a></li>
+                <!-- <li>
+                    {% for a in author %}
+                    <a href="{% url 'author_details' author_id=a.id %}">{{ a.name }}</a>
+                    {% endfor %}
+                </li> -->
+            </ul>
+        </nav>
+
+    <h2>Now take a look, these our books</h2>
+    {% for book in books %}
+        <a href="{% url 'book_details' book_id=book.id %}">{{book.title}}</a>            
+        <p>the discribtion is:{{book.discribtion}} </p>
+        <p>the spread_date is: {{book.spread_date}}</p>
+        <p>the number_pages is: {{book.number_pages}}</p>
+        <p>the ISBN is: {{book.ISBN}}</p>
+        <p>the language is: {{book.language}}</p>
+        <!-- {{book.picture}} -->
+        <img src="{{ book.picture.url }}" width="250" alt="Description of image"><br>
+        <p>==========================================================================================</p>
+
+    {% endfor %}
+</body>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>profile you are here</h1>
+<h2>that is your name : {{ user.username }}</h2>
+{% if user.email %}
+    <h2>that is your email : {{ user.email }}</h2>
+    {% endif %}
+    
+    {% for favorite in favorite_books %}
+    <h3>the name of the book: {{ favorite.favorite_books.title }}</h3>
+    <p>discribtion: {{ favorite.favorite_books.discribtion }}</p>
+
+    {% empty %}
+    <p>tell now you don't have favorite books</p>
+{% endfor %}
+
+
+
+<h4>these are our recommendations</h4>
+{% for book in book_featured %}
+<a href="{% url 'book_details' book_id=book.id %}">{{book.title}}</a>
+<p>{{book.discribtion}}</p>
+<p>{{book.language}}</p>
+{% endfor %}
+
+
+{% endblock content %}

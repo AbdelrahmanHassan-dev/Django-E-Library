@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>All the Books</title>
+    </head>
+
+<body>
+    <form method="get">
+        <select name="sort" onchange="this.form.submit()">
+            <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>الأقدم</option>
+            <option value="latest" {% if current_sort == 'latest' %}selected{% endif %}>الأحدث</option>
+        </select>
+    </form>
+
+    {% for book in books %}
+        <div>
+            <a href="{% url 'book_details' book_id=book.id %}">{{book.title}}</a>            
+            <p>{{book.discribtion}}</p>
+            <p>{{book.spread_date}}</p>
+            <p><img src="{{ book.picture.url }}" width="200" alt="picture"></p>
+        </div>
+        {% endfor %}
+        
+</body>
+</html>
+{% endblock content %}

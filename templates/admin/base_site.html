@@ -1,0 +1,9 @@
+{% extends "admin/base_site.html" %}  {# هنا نخبر Django أننا نريد "وراثة" الملف الأصلي وليس مسحه بالكامل #}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+       E-Library
+    </a>
+</h1>
+{% endblock %}
