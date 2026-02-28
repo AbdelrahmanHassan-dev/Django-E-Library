@@ -81,7 +81,7 @@ class Favoritebooks(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     favorite_books = models.ForeignKey(Book,on_delete=models.SET_NULL,null=True , blank=True)
     
-    # def __str__(self):
-    #     return f"the user {self.user} the book is {self.favorite_books.title}"
+    def __str__(self):
+        return f"the user {self.user} the book is {self.favorite_books.title}"
     class Meta:
         unique_together = ('user','favorite_books')
