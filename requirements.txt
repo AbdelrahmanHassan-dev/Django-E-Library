@@ -1,0 +1,21 @@
+asgiref==3.8.1
+Django==5.1.5
+django-braces==1.17.0
+django-jazzmin==3.0.2
+django-model-utils==5.0.0
+django-star-ratings==0.9.2
+pillow==12.1.1
+sqlparse==0.5.5
+swapper==1.4.0
+```
+
+**Commit message:** `Add requirements.txt for dependencies`
+
+---
+
+## 🎯 **Quick Action Checklist:**
+```
+☐ Create requirements.txt (NOW)
+☐ Add README.md (CRITICAL)
+☐ Remove repomix-output.xml (Clean up)
+☐ Add repository description
